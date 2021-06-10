@@ -1,6 +1,7 @@
 const path = require('path');
 
 const express = require('express');
+const port = process.env.PORT || 3000;
 const app = express();
 
 const session = require('express-session');
@@ -129,6 +130,8 @@ mongoose.connect(_URI)
   .then(result => {
       console.log('connected')
         
-    app.listen(3000);
+    app.listen(port, () => {
+      console.log(`listen on ${port}`);
+    });
   })
   .catch(err => console.log(err))
